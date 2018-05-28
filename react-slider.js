@@ -241,9 +241,9 @@
     },
     
     componentDidUpdate: function () {
-      const wrapperElement = document.getElementById('input-range-wrapper');
-      const inputRange = getComputedStyle(wrapperElement);
-      if (!isNaN(parseFloat(inputRange.width)) && !this.state.upperBound) {
+      const inputRange = this.slider && getComputedStyle(this.slider);
+      const inputRangeWidth = inputRange.width;
+      if (inputRangeWidth.indexOf('px') >= 0 && !isNaN(parseFloat(inputRangeWidth)) && !this.state.upperBound) {
         this._resize();
       }
     },
