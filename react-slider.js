@@ -239,6 +239,14 @@
         this._resize();
       }
     },
+    
+    componentDidUpdate: function () {
+      const wrapperElement = document.getElementById('input-range-wrapper');
+      const inputRange = getComputedStyle(wrapperElement);
+      if (!isNaN(parseFloat(inputRange.width)) && !this.state.upperBound) {
+        this._resize();
+      }
+    },
 
     // Check if the arity of `value` or `defaultValue` matches the number of children (= number of custom handles).
     // If no custom handles are provided, just returns `value` if present and `defaultValue` otherwise.
